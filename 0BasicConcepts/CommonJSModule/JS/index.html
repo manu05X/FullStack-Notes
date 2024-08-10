@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JS Tutorial</h1>
+    <div id="myE1"> Hello World!</div>
+
+    <button id="myButton">Click Me</button>
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <div id="outer">
+        <div id="inner">
+            <button id="myButton2">Click Me</button>
+        </div>
+    </div>
+   
+    <script>
+        // let person = {
+        //     name: 'John',
+        //     hobbies: ["Teaching", "Football","Programing"],
+        //     age : 25,
+        //     greet : function(){
+        //         console.log("Name: " + this.name);
+        //     },
+        // };
+
+        // var prpertyName = 'age';
+
+        // console.log(person.name);
+        // console.log(person.hobbies[1]);
+        // console.log(person.age);
+        // //console.log(person[age]);
+        // person.greet();
+
+        // var button = document.getElementById('myList');
+        // button.addEventListener('click', handleClick);
+
+        // function handleClick(event){
+        //    // alert("button clicked");
+        //    var target = event.target;
+        //    console.log("target: " + target.textContent);
+
+        //     console.log("Event Type: " + event.type);
+        //     console.log("Target element: ", event.target);
+        // }
+
+        var outer = document.getElementById("outer");
+        var inner = document.getElementById("inner");
+        var button = document.getElementById("myButton2");
+
+        outer.addEventListener("click", handleBubbling, true);
+        inner.addEventListener("click", handleBubbling, true);
+        button.addEventListener("click", handleBubbling, true);
+
+        function handleBubbling(event){
+            console.log("Bubbling : " + this.id);
+        }
+
+    </script>
+    <!-- <script src="App.js"></script> -->
+</body>
+</html>

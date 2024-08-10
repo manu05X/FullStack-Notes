@@ -1,0 +1,2 @@
+tabs: ["src/api.js", "index.js"]
+terminals: ["yarn install && yarn nodemon"]
