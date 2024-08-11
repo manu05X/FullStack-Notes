@@ -1,6 +1,5 @@
-// index.js
 const express = require("express");
-const connectDB = require("./database/db"); // Import the DB connection module
+const mongoose = require("mongoose");
 const productRoutes = require("./routes/productRoutes");
 
 const app = express();
@@ -9,8 +8,12 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Connect to the database
-connectDB();
+mongoose
+  .connect(
+    "mongodb+srv://kmanu00005:ovRlL7UQlgqujYQp@cluster0.co7yrow.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
+  )
+  .then(() => console.log("Db connection established"))
+  .catch((err) => console.error("Error connecting:", err));
 
 // Use Routes
 app.use("/api", productRoutes);
