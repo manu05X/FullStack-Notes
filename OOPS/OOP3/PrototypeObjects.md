@@ -166,3 +166,52 @@ Similarly, the double dot notation has to be used to get the property values def
 ConstructorFunctionName.prototype.constructor
 
 ```
+
+### Example
+
+```javascript
+//constructor function called EmployeeConstructor
+function EmployeeConstructor(_name, _age, _designation) {
+  this.name = _name;
+  this.age = _age;
+  this.designation = _designation;
+}
+
+//adding a property company to the constructor
+EmployeeConstructor.prototype.company = "Google";
+
+//creating an object called employeeObj1
+var employeeObj1 = new EmployeeConstructor("Joe", 22, "Developer");
+
+//displaying properties of employeeObj1
+console.log("Name of employee:", employeeObj1.name);
+console.log("Age of employee:", employeeObj1.age);
+console.log("Designation of employee:", employeeObj1.designation);
+console.log("Employee works in the company:", employeeObj1.company);
+
+//creating another object called employeeObj2
+var employeeObj2 = new EmployeeConstructor("Amy", 28, "Engineer");
+
+//displaying properties of employeeObj2
+console.log("Name of employee:", employeeObj2.name);
+console.log("Age of employee:", employeeObj2.age);
+console.log("Designation of employee:", employeeObj2.designation);
+console.log("Employee works in the company:", employeeObj2.company);
+
+/*
+Output
+Name of employee: Joe
+Age of employee: 22
+Designation of employee: Developer
+Employee works in the company: Google
+Name of employee: Amy
+Age of employee: 28
+Designation of employee: Engineer
+Employee works in the company: Google
+
+*/
+```
+
+The property company is added to the prototype object of the EmployeeConstructor constructor function. Due to this, it automatically becomes available to both employeeObj1 and employeeObj2 when they are created. Hence, it can directly be accessed by both object instances.
+
+![alt text](EX3.png)
