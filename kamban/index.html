@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <h1>Kanban Board</h1> -->
+    <!-- ToolBox NAV--->
+    <div class="toolbox-cont">
+      <!-- Colour Filter -->
+      <div class="toolbox-priority-cont">
+        <!-- shortcut for 4 div= div*4.colour -->
+        <div class="lightpink color-box"></div>
+        <div class="lightgreen color-box"></div>
+        <div class="lightblue color-box"></div>
+        <div class="black color-box"></div>
+      </div>
+
+      <!-- Action  buttons -->
+      <div class="action-btn-cont">
+        <div class="add-btn"><i class="fa-solid fa-plus"></i></div>
+        <div class="remove-btn"><i class="fa-solid fa-trash"></i></div>
+      </div>
+    </div>
+
+    <!-- Ticket -->
+    <!-- <div class="main-cont">
+      <div class="ticket-cont">
+        <div class="ticket-color"></div>
+        <div class="ticket-id">123456</div>
+        <div class="ticket-task">Task 1</div>
+        <div class="ticket-lock"><i class="fa-solid fa-lock"></i></div>
+      </div>
+
+      <div class="ticket-cont">
+        <div class="ticket-color"></div>
+        <div class="ticket-id">32146</div>
+        <div class="ticket-task">Task 2</div>
+      </div>
+    </div> -->
+
+    <!-- Task Modal -->
+    <div class="modal-cont">
+      <textarea placeholder="Enter your task" class="textArea-cont"></textarea>
+
+      <div class="priority-colors-container">
+        <div class="priority-color lightpink"></div>
+        <div class="priority-color lightgreen"></div>
+        <div class="priority-color lightblue"></div>
+        <div class="priority-color black active"></div>
+      </div>
+    </div>
+  </body>
+
+  <!-- <script src="./script.js"></script> -->
+  <script
+    src="https://kit.fontawesome.com/4758c01d1c.js"
+    crossorigin="anonymous"
+  ></script>
+</html>

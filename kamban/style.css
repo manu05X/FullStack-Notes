@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.toolbox-cont {
+  background-color: #4b4b4b;
+  height: 5rem;
+  /* Flex id for child of this div */
+  display: flex;
+  align-items: center;
+}
+
+.toolbox-priority-cont {
+  background-color: #3d3d3d;
+  height: 3.5rem;
+  width: 18rem;
+  margin-left: 4rem;
+  /* Flex id for child of this div */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.color-box {
+  height: 1.5rem;
+  width: 3rem;
+  /* background-color: coral; */
+}
+
+.lightpink {
+  background-color: lightpink;
+}
+
+.lightgreen {
+  background-color: lightgreen;
+}
+
+.lightblue {
+  background-color: lightblue;
+}
+
+.black {
+  background-color: black;
+}
+
+/* Action buttons */
+.action-btn-cont {
+  height: 3.5rem;
+  width: 8rem;
+  background-color: #3d3d3d;
+  margin-left: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.action-btn-cont > * {
+  display: flex;
+  color: white;
+  font-size: 2rem;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn:hover {
+  background-color: #4bb543;
+  font-size: 3.2rem;
+}
+
+.remove-btn:hover {
+  background-color: red;
+  font-size: 3.2rem;
+}
+
+.main-cont {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.ticket-cont {
+  height: 12rem;
+  width: 15rem;
+  background-color: coral;
+}
+
+.ticket-color {
+  background-color: lightpink;
+  height: 1rem;
+}
+
+.ticket-id {
+  background-color: yellow;
+  height: 2rem;
+}
+
+.ticket-lock {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5.5rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.modal-cont {
+  height: 50vh;
+  width: 45vw;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  position: absolute;
+  top: 30%;
+  left: 27%;
+}
+.textArea-cont {
+  height: 100%;
+  width: 70%;
+  background-color: #dfe4ea;
+  /* As tex has a property that can be resized but we dont want */
+  resize: none;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+}
+
+.priority-colors-container {
+  background-color: #4b4b4b;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  /* flex direction is bay defaul horizontal */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.priority-color {
+  height: 3rem;
+  width: 5rem;
+}
+
+.active {
+  border: 5px solid lightsalmon;
+}
