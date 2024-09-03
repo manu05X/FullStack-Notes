@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debouncing and Throttling</title>
+  </head>
+  <body>
+    <input type="text" />
+  </body>
+
+  <table border="">
+    <thead>
+      <th>Aspect</th>
+      <th>Debouncing</th>
+      <th>Throttling</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Purpose</td>
+        <td>Delay function execution until inactivity</td>
+        <td>Limit function execution rate</td>
+      </tr>
+      <tr>
+        <td>Execution</td>
+        <td>Executes after a pause in events</td>
+        <td>Executes at a steady rate</td>
+      </tr>
+
+      <tr>
+        <td>Event Resets Timer?</td>
+        <td>Yes, resets the timer on each event during delay</td>
+        <td>No, maintains a steady execution interval</td>
+      </tr>
+
+      <tr>
+        <td>Frequency Handling</td>
+        <td>Reduces function calls during rapid events</td>
+        <td>Limits function calls to a set interval</td>
+      </tr>
+
+      <tr>
+        <td>Use Cases</td>
+        <td>Typing (search suggestions), resizing events</td>
+        <td>Scrolling, mouse movement, rate-limited APIs</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    let count = 0; // Initialize a counter variable to track how many times the 'work' function is called.
+
+    /*
+    work is a simple function that simulates a network request by logging a message along with the current count value, then increments the count.
+    */
+    function work() {
+      console.log("Network Request", count); // Log the current value of 'count' along with the message "Network Request".
+      count++; // Increment the counter by 1 after each call.
+    }
+
+    /*
+    Debounce:
+        debounce is a higher-order function that returns a debounced version of the work function.
+        The timerId variable stores the ID of the setTimeout timer.
+        optWorkFn is the function returned by debounce, which when called:
+        Clears any previously set timer (if the function is called repeatedly in quick succession).
+        Sets a new timer that waits for the specified delay before calling work.
+        The result is that work only executes if there hasn't been another call to optWorkFn within the delay period, effectively "debouncing" the function.
+    */
+
+    function debounce(work, delay) {
+      let timerId; // Declare a variable to store the timer ID, initially undefined.
+
+      return function optWorkFn() {
+        console.log(timerId); // Log the current timer ID (if any) to the console.
+
+        clearTimeout(timerId); // Clear any existing timer to reset the delay.
+
+        timerId = setTimeout(function () {
+          work(); // After the delay, call the 'work' function.
+        }, delay); // Set a new timer with the specified delay.
+      };
+    }
+
+    /*
+    Throttle:
+        throttle is another higher-order function that returns a throttled version of the work function.
+        The flag variable controls when work can be executed.
+        optWorkFn:
+        Checks the flag. If true, it calls work and then sets the flag to false, preventing work from being called again until the interval has passed.
+        A setTimeout is used to reset the flag after the interval period, allowing work to be called again.
+    */
+    function throttle(work, interval) {
+      let flag = true; // Initialize a flag to true, allowing the first call.
+
+      return function optWorkFn() {
+        if (flag == true) {
+          // Check if the flag is true.
+          work(); // If true, call the work function immediately.
+          flag = false; // Set the flag to false to prevent further execution.
+
+          setTimeout(function () {
+            flag = true; // Reset the flag to true after the specified interval.
+          }, interval); // The reset happens after the interval time.
+        }
+      };
+    }
+    /*
+    If throttledWork() is called at time t = 0 seconds, work() will execute immediately because the flag is initially true.
+    The flag is then set to false, and no further calls to throttledWork() within the next 3 seconds will trigger work().
+    After 3 seconds (t = 3), the flag is reset to true, so the next call to throttledWork() will again execute work().
+    
+    */
+
+    let input = document.querySelector("input"); // Select the first 'input' element on the page and assign it to the variable 'input'.
+
+    //let optimizedFn = debounce(work, 5000); // Create a debounced version of 'work' with a 5-second delay and assign it to 'optimizedFn'.
+
+    let optimizedFn = throttle(work, 2000);
+    // At every keydown event, the debounced function is executed.
+    input.addEventListener("keydown", optimizedFn);
+  </script>
+</html>
+
+<!-- 
+Overall Explanation:
+The debounce function ensures that the work function is only executed after a specified delay (3 seconds here) without any further calls. This is useful in scenarios like waiting for a user to stop typing before sending a search query.
+The throttle function (though not used in this example) would ensure that work is executed at most once every specified interval, regardless of how frequently the event occurs. This is useful for actions like handling scroll events where you want to limit the frequency of function calls.
+The input element in the DOM triggers the optimizedFn (debounced) on each key press, preventing the work function from executing until the user stops typing for 3 seconds.
+
+-->

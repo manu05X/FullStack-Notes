@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      height: 200px;
+      width: 200px;
+      background-color: coral;
+    }
+  </style>
+  <body>
+    <div>I am the box</div>
+
+    <button onclick="stopAnimation()">Stop Animation</button>
+
+    <script>
+      //EX 1
+      //   function sayHello() {
+      //     console.log("Hello!");
+      //   }
+      //   //   expect the function to be called and a parameter after which it will be called i.e time in milliseconds
+      //   setTimeout(sayHello, 3000);
+
+      //   //   sayHello();
+
+      // EX2
+
+      function startAnimation() {
+        let target = document.querySelector("div");
+
+        target.style.width = "500px";
+      }
+
+      //setTimeout(startAnimation, 5000);
+
+      // every setTimeout has id
+      let id = setTimeout(startAnimation, 5000); //
+      let id2 = setTimeout(startAnimation2, 7000); //
+
+      console.log("first set Timeoit id", id);
+      console.log("second set Timeout id", id2);
+
+      // if i want setTime out to stop at somePoint then we need to use clearTimeout
+      function stopAnimation() {
+        //clearTimeout(id);
+        clearTimeout(id2);
+      }
+    </script>
+  </body>
+</html>
