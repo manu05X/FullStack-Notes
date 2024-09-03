@@ -1,0 +1,117 @@
+Code Example:
+let obj2 = {
+  name: "mrityunjay",
+  age: "23",
+  testFunction: function () {
+    console.log(this); // (1)
+    function g() {
+      console.log(this); // (2)
+    }
+    g();  // (3)
+  },
+};
+
+obj2.testFunction(); // (4)
+Execution Context Overview
+In JavaScript, an execution context defines the environment in which JavaScript code is evaluated and executed. It consists of:
+
+Global Execution Context: Created when the script starts running.
+Function Execution Context: Created when a function is invoked.
+Lexical Environment: Contains the current variables, functions, and the value of this at the time of execution.
+The execution context has two important phases:
+
+Creation Phase: Variables, function declarations, and the value of this are set.
+Execution Phase: The code is executed line by line.
+Step-by-Step Execution Context for the Code
+Global Execution Context
+
+When the script begins execution, the Global Execution Context is created.
+In this context, the obj2 object and the testFunction method are defined.
+No function is executed yet, so nothing gets logged yet.
+Calling obj2.testFunction()
+
+When obj2.testFunction() is called at line (4), the Function Execution Context for testFunction is created.
+During the Creation Phase, the value of this inside testFunction is set to obj2 because testFunction is called as a method of obj2.
+Inside testFunction:
+
+The this keyword refers to obj2 because it was invoked with obj2.testFunction(). This is part of the method call rule in JavaScript.
+At line (1), console.log(this); will log:
+
+javascript
+{ name: 'mrityunjay', age: '23', testFunction: [Function: testFunction] }
+Calling the Inner Function g()
+
+Now, the inner function g() is defined inside testFunction, and it is invoked at line (3).
+When g() is called, a new Function Execution Context for g is created.
+Inside g():
+
+In regular functions (non-arrow functions), this is determined by how the function is called, not where it is defined.
+Since g() is called as a regular function (not as a method of an object), this defaults to the global object in non-strict mode. In the context of Node.js, the global object is [global].
+At line (2), console.log(this); will log the global object:
+
+javascript
+<ref *1> Object [global] {
+  global: [Circular *1],
+  // ... Other global properties and functions ...
+}
+The reason why this inside g() is not obj2 is because g is not bound to obj2 — it’s invoked as a normal function, so this inside g refers to the global object by default in non-strict mode.
+Execution Flow
+
+The execution flow goes like this:
+First, obj2.testFunction() is called.
+The this inside testFunction refers to obj2 and logs it.
+Inside testFunction, g() is invoked. Since g is a regular function, this in g() refers to the global object, and it logs the global object.
+Execution Context Breakdown:
+Global Execution Context:
+
+obj2 and testFunction are created.
+this in the global context points to the global object (global in Node.js).
+testFunction() Execution Context:
+
+this inside testFunction points to obj2 because it's called as obj2.testFunction().
+g() is defined within testFunction.
+g() Execution Context:
+
+this inside g() points to the global object because g is called as a normal function and not as a method of an object.
+In non-strict mode, this defaults to the global object.
+Why the this Changes Inside g():
+Non-strict mode: When you call a function like g() directly (not as a method of an object), this defaults to the global object.
+To avoid this, you could:
+Use an arrow function, which captures this from the surrounding (lexical) scope.
+Or explicitly bind this using .bind(this) to maintain the value of this from testFunction.
+Updated Example with Arrow Function:
+javascript
+
+let obj2 = {
+  name: "mrityunjay",
+  age: "23",
+  testFunction: function () {
+    console.log(this);  // Logs obj2
+    const g = () => {
+      console.log(this); // Logs obj2 (arrow functions don't have their own `this`)
+    }
+    g();
+  },
+};
+
+obj2.testFunction();
+Updated Example with bind:
+javascript
+Copy code
+let obj2 = {
+  name: "mrityunjay",
+  age: "23",
+  testFunction: function () {
+    console.log(this);  // Logs obj2
+    function g() {
+      console.log(this); // Logs obj2 (because of `.bind(this)`)
+    }
+    g.bind(this)(); // Binds `this` from testFunction to g
+  },
+};
+
+obj2.testFunction();
+Summary:
+Execution context defines the environment in which code runs. this depends on how a function is called.
+Inside object methods, this refers to the object itself.
+Inside nested functions (in non-strict mode), this refers to the global object unless handled using arrow functions or .bind()
