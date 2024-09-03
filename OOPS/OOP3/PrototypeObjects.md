@@ -54,7 +54,7 @@ When the **EmployeeConstructor's** _[[Prototype]]_ property is accessed, the bro
 The Prototype Object for **EmployeeConstructor** consists of two further properties:
 
 - The **constructor** which points back to the **EmployeeConstructor** constructor function.
-- The **** proto **** property also seen as **[[Prototype]]** .
+- The \***\* proto \*\*** property also seen as **[[Prototype]]** .
 
 Take a look at the illustration below to visualize the concepts explained above:
 ![alt text](proto.png)
@@ -152,3 +152,17 @@ Just like properties, methods can also be added to a constructor function’s pr
 #### Syntax
 
 Here is how methods can be added to a constructor function using the prototype property:
+
+```javascript
+ConstructorFunctionName.prototype.PropertyName = PropertyValue;
+```
+
+Since the property is being defined on the prototype of the constructor function, the double dot notation has to be used to set property values. First, the prototype property is accessed using the dot notation, then the property is defined on it using the dot operator.
+
+Similarly, the double dot notation has to be used to get the property values defined on the prototype object as well.
+
+```JS
+//accessing the constructor property of a Prototype Object
+ConstructorFunctionName.prototype.constructor
+
+```
