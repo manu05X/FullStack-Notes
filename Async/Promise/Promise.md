@@ -121,3 +121,9 @@ myPromise
 ## Summary
 
 Promises provide a powerful way to handle asynchronous operations in JavaScript. They encapsulate the state of an operation and provide a structured way to handle success and failure cases through their various methods and internal operations. Understanding the internal workings, such as PromiseCapability, PromiseReaction, and the role of the Promise constructor, allows for more advanced use and troubleshooting of promises in JavaScript.
+
+> Link to the reference :
+
+a> https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
+
+b> https://github.com/domenic/promises-unwrapping/tree/master
