@@ -231,8 +231,5 @@ Here, multiplyByTwo is a partially applied function that multiplies any number b
 
 Currying is a powerful functional programming technique that transforms a function with multiple arguments into a series of nested functions that each take one argument. It allows for flexibility, reusability, and composition of functions, which is especially useful in functional programming.
 
-LINKS : https://dev.to/pranav016/advanced-javascript-series-part-1-behind-the-scenes-javascript-engine-ats-hidden-classes-garbage-collection-3ajj
-
-```
-
-```
+LINKS :
+https://dev.to/pranav016/advanced-javascript-series-part-1-behind-the-scenes-javascript-engine-ats-hidden-classes-garbage-collection-3ajj
