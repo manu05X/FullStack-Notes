@@ -215,3 +215,93 @@ Employee works in the company: Google
 The property company is added to the prototype object of the EmployeeConstructor constructor function. Due to this, it automatically becomes available to both employeeObj1 and employeeObj2 when they are created. Hence, it can directly be accessed by both object instances.
 
 ![alt text](EX3.png)
+
+## Function Shadowing in JavaScript:
+
+Function shadowing in JavaScript refers to the practice where a property or method in a derived or local scope (e.g., a function or object) overrides or "shadows" a property or method with the same name in a parent or outer scope (e.g., prototype chain or higher level). In the context of prototypes, shadowing occurs when an object has a property or method with the same name as one of its prototype's properties or methods, effectively hiding the prototype's version.
+
+### Prototype Chain and Shadowing
+
+In JavaScript, when you access a property or method on an object, JavaScript first checks if that property or method exists directly on the object itself. If not, it checks the object's prototype. If a property or method with the same name is found on both the object and its prototype, the one on the object "shadows" or overrides the one in the prototype.
+
+#### Example of Function Shadowing in JavaScript:
+
+```javascript
+// Base object with a method
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function () {
+  console.log("Hello from prototype!");
+};
+
+// Create an instance of Person
+const person1 = new Person("Mark");
+
+// Access greet method from prototype
+person1.greet(); // Output: Hello from prototype!
+
+// Shadow the prototype method by defining it directly on the instance
+person1.greet = function () {
+  console.log("Hello from instance!");
+};
+
+// Now the shadowed method is called
+person1.greet(); // Output: Hello from instance!
+
+// If you delete the shadowed method, the prototype method will be accessible again
+delete person1.greet;
+person1.greet(); // Output: Hello from prototype!
+```
+
+### How It Works:
+
+1. Prototype Method: The Person.prototype.greet function is available to all instances of Person. When person1.greet() is called, JavaScript looks for greet in person1. If it doesn't find it directly, it looks up the prototype chain and finds greet on Person.prototype.
+
+2. Shadowing the Method: When we assign a new greet function directly to person1, this function shadows the greet method in the prototype. So, calling person1.greet() now invokes the locally defined function, not the one in the prototype.
+
+3. Restoring Prototype Method: When the shadowed method is deleted (delete person1.greet), the prototype method becomes accessible again. The JavaScript engine will traverse the prototype chain to find greet in Person.prototype.
+
+### Function Shadowing in Context of Prototypes
+
+- Direct vs Prototype Properties: Direct properties and methods always have priority over those in the prototype chain. This is what makes function shadowing possible. If a property or method exists both in an object and its prototype, the object’s version is used.
+- Avoiding Unintended Shadowing: Shadowing can sometimes lead to confusion if the developer does not realize that they are overriding a method or property from the prototype. It's important to be mindful of prototype properties when designing objects.
+
+#### Example of Function Shadowing in Arrays:
+
+```javascript
+const arr = [1, 2, 3];
+
+// Define a custom method on Array.prototype
+Array.prototype.myMethod = function () {
+  console.log("Prototype method");
+};
+
+// Call the prototype method
+arr.myMethod(); // Output: Prototype method
+
+// Shadowing the method by defining it directly on the array
+arr.myMethod = function () {
+  console.log("Shadowed method");
+};
+
+// Call the shadowed method
+arr.myMethod(); // Output: Shadowed method
+
+// Remove the shadowed method
+delete arr.myMethod;
+
+// Now the prototype method is accessible again
+arr.myMethod(); // Output: Prototype method
+```
+
+Here, the method myMethod in Array.prototype is initially accessible, but once it's shadowed by defining myMethod directly on the arr object, the prototype version is hidden. After deleting the shadowed method, the prototype version is accessible again.
+
+### Key Takeaways:
+
+- Function shadowing allows you to override methods or properties from the prototype in the local object scope.
+- JavaScript will always prioritize properties or methods on the object over those in the prototype.
+- You can revert back to the prototype method by deleting the local shadowed method.
+
+This pattern is common when customizing behavior for individual objects without affecting the prototype or other instances.
