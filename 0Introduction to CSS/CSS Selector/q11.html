@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Select elements with specific classes and set their color to blue */
+      .c1.c2 {
+        color: blue; /* This targets both <p class="c1 c2"> and <div class="c1 c2"> */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Select the element with "Select me" and make it blue  -->
+    <div class="some-class">
+      <div id="the-one">
+        <p>Random</p>
+        <div>
+          <p class="c1 c2">Random</p>
+        </div>
+        <p class="c1 c2">Select me</p>
+        <!-- This will be blue -->
+        <div class="c1 c2">Select me</div>
+        <!-- This will also be blue -->
+      </div>
+    </div>
+    <div class="some-class">
+      <p class="c1">Random</p>
+      <p class="c2">Random</p>
+      <p class="c1 c2">Random</p>
+    </div>
+  </body>
+</html>
+
+<!-- 
+Raw Problem
+
+Write internal CSS to select the elements that contain "Select me" as innerText
+and set the color as 'blue'.
+
+Further, refer to the test cases to understand necessary requirements to submit the problem.
+-->
