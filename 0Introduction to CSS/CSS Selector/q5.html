@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* multiple class on same elements*/
+
+      .m1.m2 {
+        color: blue;
+      }
+
+      .m3 {
+        color: blueviolet;
+      }
+
+      .m4 {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Select the element with multiple classes(m1 & m2 i.e Select me ) and make them blue -->
+    <div class="m1 m2">Select me</div>
+
+    <div class="m1">Not me</div>
+    <div class="m2">Not me either</div>
+
+    <!-- Second(m4) class color/ properties will overlapp the previous(m3) class -->
+    <div class="m4 m3">Hey Do know class in css</div>
+    <!-- The order of class defination in div element doesnot matter. The order in style component matters i.e if first m4 class is define or m3 class -->
+    <div class="m3 m4">Is it clear Now</div>
+  </body>
+</html>

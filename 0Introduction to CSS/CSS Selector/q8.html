@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- id selector -->
+
+  <style>
+    #the-one {
+      color: blue;
+    }
+  </style>
+
+  <body>
+    <!-- Select s2 with id=the-one and make it blue -->
+    <p class="s1">Random</p>
+    <p class="s1">Random</p>
+    <p class="s1">Random</p>
+    <p class="s1">Random</p>
+    <p class="s2">Random</p>
+    <p class="s2">Random</p>
+    <p class="s2" id="the-one">select me</p>
+    <!-- This specific paragraph (<p>) is the only one with the ID the-one, making it the only element affected by the #the-one selector. -->
+    <p class="s2">Random</p>
+    <p class="s2">Random</p>
+  </body>
+</html>
+
+<!-- 
+Only use one id for one element do not use two id for multiple elements as it will not give errors messages in CSS but will give error in case of js
+
+What's Being Taught:
+A> ID Selector (#):
+    The # symbol is used in CSS to select elements by their id attribute.
+    IDs are meant to be unique within the HTML document, so the #the-one selector will apply styles exclusively to the element with id="the-one".
+
+B> CSS Specificity and Uniqueness of IDs:
+    Unlike class selectors (e.g., .s1, .s2), which can be applied to multiple elements, the ID selector is designed for one element only. This ensures a high level of specificity for targeting a single, unique element.
+
+C> Context in HTML:
+    There are multiple p elements with the classes s1 and s2, but only one of these paragraphs (<p class="s2" id="the-one">select me</p>) will be styled blue because it has the unique ID the-one.
+    The other p elements with class s2 are unaffected by the #the-one CSS rule, even though they share the same class.
+
+
+Key Observations:
+CSS Selector (#the-one):
+    The selector #the-one targets the HTML element that has the id="the-one".
+    IDs in HTML must be unique within a document, meaning that this style will only apply to the single element with that specific ID.
+    The rule color: blue; will change the text color of the element with id="the-one" to blue.
+
+-->

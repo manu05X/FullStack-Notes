@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .c1 .c2 {
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Select "I'm here. find me" and make it blue  -->
+
+    <div class="c1">
+      <div>
+        <div>
+          <span>
+            <div class="c2">I'm here. find me</div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- This element matches the selector because the div.c2 is inside a div.c1 as a descendant (it is nested multiple levels deep, but still satisfies the selector). -->
+
+    <span class="c1">
+      <div class="c2">Dont select me</div>
+    </span>
+  </body>
+</html>
+
+<!-- 
+Key Observations:
+CSS Selectors (.c1 .c2):
+    The CSS selector .c1 .c2 targets any element with the class c2 that is a descendant (at any level) of an element with the class c1.
+    The styles specified for this selector (color: blue) will apply to all matching elements.
+
+
+This also seems like it should match the selector, since div.c2 is within span.c1. 
+However, there's a crucial detail: in HTML, a div element is a block-level element, and a span is an inline-level element.
+ Nesting block-level elements like div inside inline-level elements like span is invalid HTML. 
+ In modern browsers, this will likely be corrected automatically by the browser (meaning the structure may be modified behind the scenes).
+
+
+
+ What's Being Taught:
+The importance of the CSS selector's specificity and structure:
+    The rule .c1 .c2 works on any c2 element nested inside c1 at any depth.
+The impact of invalid HTML on CSS application:
+    While the first instance of .c1 .c2 works fine (valid HTML nesting), the second might not work as expected due to the invalid nesting of div inside span.
+CSS and DOM structure relationship:
+    Proper application of CSS depends heavily on how elements are nested in the HTML structure. The first I'm here. find me text will be blue, whereas the second (Dont select me) might not render as expected due to invalid nesting.
+-->

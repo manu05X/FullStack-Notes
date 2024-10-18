@@ -456,17 +456,17 @@ Promise.any() only cares about the first successfully resolved promise. It will 
 This is useful when you are looking for the fastest successful result and don't care if some of the other promises fail.
 */
 
-Promise.any([
-  promisifyAction1("Steve"), // Takes 2000ms to resolve
-  promisifyAction2(24), // Takes 1000ms to resolve
-  promisifyAction3("Software Engineer"), // Takes 3000ms to resolve
-])
-  .then((res) => {
-    console.log(res); // Logs the first resolved value
-  })
-  .catch((err) => {
-    console.error("All promises rejected:", err);
-  });
+// Promise.any([
+//   promisifyAction1("Steve"), // Takes 2000ms to resolve
+//   promisifyAction2(24), // Takes 1000ms to resolve
+//   promisifyAction3("Software Engineer"), // Takes 3000ms to resolve
+// ])
+//   .then((res) => {
+//     console.log(res); // Logs the first resolved value
+//   })
+//   .catch((err) => {
+//     console.error("All promises rejected:", err);
+//   });
 
 //________________________________________________________________________________________________________________________________
 

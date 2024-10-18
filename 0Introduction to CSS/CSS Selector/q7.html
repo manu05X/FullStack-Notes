@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* class with children combinator */
+    .c1 > p {
+      color: blue;
+    }
+  </style>
+
+  <body>
+    <!-- select "I'm the direct son" and make it blue  -->
+    <div class="c1">
+      <p>I'm the direct son</p>
+    </div>
+
+    <div class="c1">
+      <span>
+        <p>I'm the indirect son</p>
+      </span>
+    </div>
+  </body>
+</html>
+
+<!-- 
+Key Observations:
+CSS Selector (.c1 > p):
+    The selector .c1 > p targets any p element that is a direct child of an element with the class c1.
+    A direct child means the p tag must be immediately inside the .c1 element, without any other elements in between.
+
+
+HTML Structure:
+
+The HTML contains two elements with the class .c1, but the p tags within them have different levels of nesting:
+1 First .c1 Block: 
+    In this case, the p tag is a direct child of the div.c1. There are no other elements between div.c1 and p. 
+        Hence, the CSS rule .c1 > p will apply, and the text "I'm the direct son" will be colored blue.
+
+2 Second .c1 Block: 
+    Here, the p tag is not a direct child of div.c1. Instead, it's a descendant of div.c1, but there is an intermediary element (span) between div.c1 and p.
+    As a result, the CSS rule will not apply to this p tag, and the text "I'm the indirect son" will not be colored blue.
+
+
+What's Being Taught:
+A> Child combinator selector (>):
+    The > in .c1 > p ensures that only p elements that are directly inside .c1 (no intermediary elements in between) will be styled.
+    This is in contrast to the descendant selector (e.g., .c1 p, without >), which would apply to all p elements inside .c1, regardless of depth.
+B> CSS specificity:
+    The structure of the HTML determines whether the style gets applied. Only the element that is an immediate child of .c1 will get the blue color, demonstrating the significance of direct child relationships in CSS.
+-->

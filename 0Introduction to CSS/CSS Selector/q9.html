@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* attribute selector */
+
+    input[value="Select me"] {
+      background-color: blue;
+    }
+  </style>
+
+  <body>
+    <!-- Select input element with the value "Select Me" and 
+        make its background blue  -->
+
+    <form>
+      <input type="button" value="Click Me" />
+      <input type="button" value="Select me" />
+    </form>
+  </body>
+</html>
+
+<!-- 
+Key Observations:
+CSS Selector (input[value='Select me']):
+    The selector input[value='Select me'] targets any <input> element whose value attribute is set to exactly "Select me".
+    The rule background-color: blue; will change the background color of the matching input element to blue.
+    In this case, the attribute selector is looking for an input element with the specific value="Select me".
+
+
+
+What's Being Taught:
+A> Attribute Selector ([attribute=value]):
+    The selector input[value='Select me'] specifically looks for an input element whose value attribute equals 'Select me'.
+    Attribute selectors allow you to apply styles to elements based on their attributes and are useful when you need to target elements with specific attributes (e.g., type, value, href, src, etc.).
+
+B> CSS Specificity Based on Attribute Values:
+    The selector is precise and only applies the style to elements that exactly match the specified attribute and value. In this case, only the input element with the value='Select me' will be styled.
+
+C> HTML Context:
+    There are two input buttons in the form, but only the second one (<input type="button" value="Select me">) has the value "Select me". As a result, this button's background will be blue, while the other button (value="Click Me") remains unchanged.
+-->
