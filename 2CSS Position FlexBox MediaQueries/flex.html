@@ -11,38 +11,41 @@
         background-color: peachpuff;
         border: 3px solid black;
         display: flex; /*There are 2 axis in flex 1> main axis(horizontal) 2> cross axis(verticle). By default they will be in single direction in row wise as it is align with main axis */
-        flex-direction: row; /* The main axis is the where the content is align by default */
-        /*flex-direction: column;*/ /* here we are making cross axis as our main axis so the box will align in verticle direction */
-        gap: 50px;
+        /*flex-direction: row;*/ /* The main axis is the where the content is align by default */
+        /* Set flex direction to column, making the main axis vertical (items stack on top of each other) */
+        flex-direction: column; /* here we are making cross axis as our main axis so the box will align in verticle direction */
+        gap: 50px; /* Create a 50px gap between each flex item (the boxes) */
         justify-content: center; /* content aling to the center of main axis */
         align-items: center; /*This defines the default behavior for how flex items are laid out along the cross axis on the current line. */
-        /* flex-wrap: wrap; */
+        /* The following are additional properties that are commented out */
+        /* flex-wrap: wrap; */ /*Use for responsive design. Allows flex items to wrap into multiple rows if container is too small */
       }
 
+      /* Base styling for the flex items (the boxes) */
       .box {
-        height: 200px;
-        width: 200px;
-        margin: 10px;
-
-        border: 2px solid brown;
+        height: 200px; /* Fixed height for each box */
+        width: 200px; /* Fixed width for each box */
+        margin: 10px; /* Adds space around each box */
+        border: 2px solid brown; /* Brown border around each box */
       }
 
+      /* Specific styling for individual boxes */
       .box1 {
-        background-color: aqua;
-        /* flex-shrink: 1; */
+        background-color: aqua; /* Aqua background for box1 */
+        /* flex-shrink: 1; */ /* Allows this box to shrink if necessary (commented out) */
       }
 
       .box2 {
-        background-color: blue;
+        background-color: blue; /* Blue background for box2 */
       }
 
       .box3 {
-        background-color: red;
-        /* flex-grow: 1; */
+        background-color: red; /* Red background for box3 */
+        /* flex-grow: 1; */ /* Allows this box to grow and take up more space if there's extra space (commented out) */
       }
 
       .box4 {
-        background-color: coral;
+        background-color: coral; /* Coral background for box4 */
       }
     </style>
   </head>
@@ -58,12 +61,27 @@
 
 <!-- 
 imp Artice:  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+        https://flexboxfroggy.com/
 
 
 Flexbox is a one-dimensional or single direction layout model for distributing space between items and includes numerous alignment capabilities.
 It helps to align items better without using Positioning and also it helps to craete responsive design.
 
 
+Main Properties of Flexbox are :
+1> display : flex
+2> flex-direction 
+3> justify-content
+4> align-items
+
+
+Flex-wrap
+
+Responsive web design?
+
+If a website is opened in mob, tab, laptop or etc. The website should not loose its look and feel (i.e UI and UX should be same). 
+The original design should not break.
+We use flexbox to create reponsive design using flex-wrap : wrap.
 
 
 
