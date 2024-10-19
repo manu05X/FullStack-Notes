@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+        *{
+            color:greenyellow
+        }
+        .heading{
+            color:tomato
+        }
+        /* find element having class heading but that element should be h1  */
+        h1.heading{ 
+            color:royalblue;
+        }
+        /* find the element having id the-head and element should be h1  */
+        h1#the-head{
+            color:black
+        }
+        body h1#the-head{
+            color:pink !important;
+        }
+        body h1.heading{
+            color:red
+        }
+        #the-head{
+            color:darkkhaki
+        }
+        h1{
+            color:green !important;
+        }
+        h1{
+            color:yellow !important;
+        }
+        h1{
+            color: blue;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1 class="heading" id="the-head" style="color: aqua !important;">
+        Hello World
+    </h1>
+    <h1 class="heading">
+        Another heading
+    </h1>
+    <h2>
+        Hello world 2
+    </h2>
+    <h3 class="heading">
+        Hello world 3
+    </h3>
+</body>
+</html>
