@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .parent {
+        height: 2000px;
+        width: 2000px;
+        margin: 100px;
+        border: 2px solid green;
+      }
+
+      .container {
+        border: 3px solid black;
+        background-color: coral;
+
+        height: 4000px;
+      }
+
+      .container-2 {
+        height: 4000px;
+        background-color: aqua;
+        border: 3px solid brown;
+      }
+
+      img {
+        margin: 10px;
+      }
+
+      .image2 {
+        /* position: relative; // relative position w.r.t current position, this gives the ability to move images from current position
+          top : 150px;
+          left: 100px;  */
+        /* top right bottom left */
+      }
+
+      .image3 {
+        /* position: absolute;
+        top: 200px;
+        left: 150px; */
+        position: sticky;
+        top: 400px;
+      }
+
+      .image4 {
+        position: fixed;
+        top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="poster1.jpeg"
+        alt=""
+        width="250px"
+        height="250px"
+        class="image1"
+      />
+      <img
+        src="poster2.jpeg"
+        alt=""
+        width="250px"
+        height="250px"
+        class="image2"
+      />
+      <img
+        src="poster3.jpeg"
+        alt=""
+        width="250px"
+        height="250px"
+        class="image3"
+      />
+      <img
+        src="poster4.jpeg"
+        alt=""
+        width="250px"
+        height="250px"
+        class="image4"
+      />
+    </div>
+
+    <div class="container-2"></div>
+
+    <div class="container-2"></div>
+  </body>
+</html>
+
+<!-- 
+https://www.geeksforgeeks.org/difference-between-relative-and-absolute-position-in-css/
+
+So, there are several types of positioning: static, relative, absolute, fixed, sticky, initial and inherit. First of all, let’s explain what all of these types mean.
+
+    Static - this is the default value, all elements are in order as they appear in the document.
+    Relative - the element is positioned relative to its normal position.
+    Absolute - the element is positioned absolutely to its first positioned parent. If no parent element is present, the document body is used as the parent.
+    Fixed - the element is positioned related to the browser window.
+    Sticky - the element is positioned based on the user’s scroll position.
+
+
+
+What Is Relative Positioning?
+    When you set the position relative to an element, without adding any other positioning attributes (top, bottom, right, left) nothing will happen. 
+    When you add position apart from relative, such as left: 20px the element will move 20px to the right from its normal position. 
+    Here, you can see that this element is relative to itself. When the element moves, no other element on the layout will be affected.
+
+    There is a thing you should keep in mind while setting position - relative to an element limits the scope of absolutely positioned child elements. 
+    This means that any element that is the child of this element can be absolutely positioned within this block.
+
+
+
+What Is Absolute Positioning?
+    Absolute positioning allows you to place your element precisely where you want it.
+    Positioned relative to the closest positioned ancestor or the document body if no ancestor is found.
+    It is removed from the document flow, and other elements may shift.
+
+    Absolute positioning is done relative to the first relatively (or absolutely) positioned nearest parent element.
+    In the case when there is no positioned parent element, the element that has position set to absolute will be positioned related directly to the HTML element (the page itself).
+
+    An important thing to keep in mind while using absolute positioning is to make sure it is not overused, otherwise, it can lead to a maintenance nightmare.
+
+
+What Is Absolute Fixed?
+    Positioned relative to the browser window (viewport).
+    No, it is removed from the document flow.
+    Stays fixed in place even when the page is scrolled.
+    Does not retain any space in the document layout.
+    Used for sticky elements like headers, footers, or buttons.
+    Always creates a new stacking context.
+    Fixed navigation bars, banners, or call-to-action buttons.
+
+
+What Is Absolute Sticky?
+    An element with position: sticky; is positioned based on the user's scroll position.
+    A sticky element toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed).
+-->
