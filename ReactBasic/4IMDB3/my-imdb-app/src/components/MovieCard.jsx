@@ -17,7 +17,10 @@ function MovieCard({
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${posterUrl})`,
       }}
     >
-      {/* heart eye emoji */}
+      {/* heart eye emoji
+       onClick={handleAddtoWatchListProps(movieObject)} ->  if we donot use ()=> the this will run till all the data is added. So we use function so it is triggered or calle donly whent imoji is clicked
+       onClick={() => handleAddtoWatchListProps(movieObject)}
+       */}
       <div
         onClick={() => handleAddtoWatchListProps(movieObject)}
         className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-900/60"

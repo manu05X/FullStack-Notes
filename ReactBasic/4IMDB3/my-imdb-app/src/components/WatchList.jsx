@@ -1,4 +1,4 @@
-function WatchList() {
+function WatchList({ WatchList }) {
   return (
     <>
       {/* Search Bar */}
@@ -29,19 +29,24 @@ function WatchList() {
 
           {/* WatchList Table Body */}
           <tbody>
-            <tr className="border-b-2">
-              <td className="flex items-center px-6 py-4">
-                <img
-                  className="h-[6rem] w-[10rem]"
-                  src="https://i.pinimg.com/originals/29/7d/e0/297de0761b0c756266d74ca50d03cc1d.jpg"
-                />
-                <div className="mx-10">Movie Title</div>
-              </td>
-              <td>10</td>
-              <td>9</td>
-              <td>Genre</td>
-              <td className="text-red-500">Click-Delete</td>
-            </tr>
+            {WatchList.map((moviesObj, index) => {
+              return (
+                <tr key={moviesObj.id || index} className="border-b-2">
+                  <td className="flex items-center px-6 py-4">
+                    <img
+                      className="h-[6rem] w-[10rem] bg-cover"
+                      src={`https://image.tmdb.org/t/p/original/${moviesObj.poster_path}`}
+                      alt={moviesObj.title}
+                    />
+                    <div className="mx-10">{moviesObj.title}</div>
+                  </td>
+                  <td>{moviesObj.vote_average}</td>
+                  <td>{moviesObj.popularity}</td>
+                  <td>Genre</td>
+                  <td className="text-red-500 cursor-pointer">Click-Delete</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
