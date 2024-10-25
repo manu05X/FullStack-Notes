@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Banner from "./components/Banner";
+import BannerDynamic from "./components/BannerDynamic";
 import Movies from "./components/Movies";
 import NavBar from "./components/NavBar";
 import WatchList from "./components/WatchList";
@@ -8,6 +8,10 @@ import WatchList from "./components/WatchList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { MovieContext } from "./components/MovieContext";
+import TopRated from "./components/TopRated";
+import Upcoming from "./components/Upcoming";
+import MovieDetail from "./components/MovieDetail";
+// import Banner from "./components/Banner";
 
 function App() {
   //create the state to hold movies watchlist
@@ -60,12 +64,16 @@ function App() {
               path="/"
               element={
                 <>
-                  <Banner />
+                  <BannerDynamic />
+                  {/* <Banner /> */}
                   <Movies />
                 </>
               }
             />
+            <Route path="/Top-Rated" element={<TopRated />} />
+            <Route path="/Upcoming" element={<Upcoming />} />
             <Route path="/watchlist" element={<WatchList />} />
+            <Route path="/MovieDetail/:id" element={<MovieDetail />} />
           </Routes>
         </MovieContext.Provider>
       </BrowserRouter>
@@ -106,15 +114,5 @@ In this case:
 3> In the Movies component, it's passed further down to MovieCard as handleAddtoWatchListProps.
 4> Finally, in the MovieCard component, the function is invoked when the user clicks on the heart emoji, adding a movie to the watchlist.
 
-
-Cons Of Context API:
- Context API fails when their is a highy frequency change in state.
- Context API also fails wher their is Dynamic data coming from external source.
-
-Then we use Redux to manage data accross diffrent state and component.
-
-
-
-//https://codesandbox.io/p/devbox/pedantic-dawn-5qxly7?file=%2Fsrc%2FApp.jsx
 
 */
