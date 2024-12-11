@@ -84,7 +84,7 @@ Hoisting is a mechanism via which all the variables present in their respective 
 >
 > **Temporal Dead Zone**
 >
-> - Variables declared with let and const are also hoisted but, unlike var, are not initialized with a default value such as _undefined_. A _ReferenceError exception_ will be thrown if a variable declared with let or const is read before it is initialized. This is because they stay in a **Temporal Dead Zone** before they are explicitly declared
+> - Variables declared with let and const are also hoisted but, unlike var, let and const are not initialized with a default value such as _undefined_. A _ReferenceError exception_ will be thrown if a variable declared with let or const is read before it is initialized. This is because they stay in a **Temporal Dead Zone** before they are explicitly declared
 
 ## What is Lexical Scope?
 
