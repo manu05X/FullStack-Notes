@@ -175,12 +175,18 @@ StatevsProps.propTypes = {
 
 ## Ques 12: In how many ways can we export/import things from a JS module?
 
-- **Default Export/Import:** - Use it when you want to export something by default. - Multiple Default exports are not allowed from the same module. - We can refer to the default exported thing by any name, so the name is not significant. - Example:
+- **Default Export/Import:**
+- Use it when you want to export something by default.
+- Multiple Default exports are not allowed from the same module.
+- We can refer to the default exported thing by any name, so the name is not significant. - Example:
   ```jsx
   export default Counter;
   import Counter from "./counter";
   ```
-- **Named Export/Import:** - Use it when you have multiple things to be exported from a JS Module. - Named exports must be referred to by the Exact Same Name while importing them. - Example:
+- **Named Export/Import:**
+- Use it when you have multiple things to be exported from a JS Module.
+- Named exports must be referred to by the Exact Same Name while importing them.
+- Example:
 
   ```jsx
   export { Counter };
