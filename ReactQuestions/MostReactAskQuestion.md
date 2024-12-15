@@ -210,6 +210,66 @@ StatevsProps.propTypes = {
 - Calculates the difference between the previous and updated Virtual DOMs.
 - Updates only the changed parts in the actual DOM, making React highly efficient for DOM manipulations.
 
+## Ques 16: In React props are passed from parent to child generally but how can we pass the props from child to parent?
+
+- Props are read-only data passed from a parent component to a child component.
+- Props are immutable and are used to communicate between components.
+
+In React, props flow from parent to child by design, as React follows a unidirectional data flow. However, to send data from a child component to a parent, you can use callback functions. Here's how it works:
+
+- **Steps to Pass Data from Child to Parent**
+- Define a function in the parent component that will handle the data coming from the child.
+- Pass that function as a prop to the child component.
+- Call the function inside the child component, passing the desired data as arguments.
+
+**Example: Passing Data from Child to Parent**
+
+```jsx
+import React, { useState } from "react";
+function ParentComponent() {
+  const [message, setMessage] = useState("");
+  // Function to handle data from child
+  const handleChildData = (data) => {
+    setMessage(data);
+  };
+
+  return (
+    <div>
+      <h1>Parent Component</h1>
+      <p>Message from Child: {message}</p>
+      {/* Pass the function as a prop to the child */}
+      <ChildComponent onSendMessage={handleChildData} />
+    </div>
+  );
+}
+
+function ChildComponent({ onSendMessage }) {
+  const sendMessageToParent = () => {
+    const data = "Hello from the Child!";
+    onSendMessage(data); // Call the parent's function with data
+  };
+
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <button onClick={sendMessageToParent}>Send Message to Parent</button>
+    </div>
+  );
+}
+export default ParentComponent;
+```
+
+### Explanation:
+
+1. **Parent Component:**
+
+   - Contains a `handleChildData` function to handle data received from the child.
+   - Passes this function to the child component as a prop (`onSendMessage`).
+
+2. Child Component:
+   - Calls the `onSendMessage` function (received via props) and sends the data to the parent.
+3. When the button is clicked in the child, the `sendMessageToParent` function is triggered, which in turn calls the parent's function with the message.
+
 ```
 
 ```

@@ -77,8 +77,8 @@ const CounterParent = () => {
 
 const Frameworks = () => {
   const [frameworks, setFrameworks] = React.useState([
-    {id: 166, name: "React"},
-    {id: 321, name: "Angular"},
+    { id: 166, name: "React" },
+    { id: 321, name: "Angular" },
   ]);
 
   return (
@@ -90,7 +90,7 @@ const Frameworks = () => {
         ))}
       </div>
       <button
-        onClick={() => setFrameworks([{id: 888, name: "Vue"}, ...frameworks])}
+        onClick={() => setFrameworks([{ id: 888, name: "Vue" }, ...frameworks])}
       >
         Add New
       </button>
@@ -100,3 +100,5 @@ const Frameworks = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(React.createElement(CounterParent));
+
+// https://app.eraser.io/workspace/zz6uyMHtBfPf9rzyzplH
