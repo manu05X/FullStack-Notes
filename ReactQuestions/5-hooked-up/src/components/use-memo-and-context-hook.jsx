@@ -1,9 +1,14 @@
-import {useCallback, useMemo, useState} from "react";
+import { useCallback, useMemo, useState } from "react";
 
 const UseMemoAndCallbackHook = () => {
   const [counter, setCounter] = useState(0);
   const [counter2, setCounter2] = useState(100);
 
+  // const squaredValue = () => {
+  //   console.log("Expensive calculation...");
+
+  //   return counter * counter;
+  // };
   const squaredValue = () => {
     console.log("Expensive calculation...", counter2);
 
@@ -24,6 +29,7 @@ const UseMemoAndCallbackHook = () => {
         - It is a hook used to memoize the result of a function and cache it, recalculating 
         it only if the dependencies change.
     */}
+      {/* <h2>Squared Counter: {squaredValue()}</h2> */}
       <h2>Squared Counter: {squaredValueUseMemo}</h2>
       <button onClick={() => setCounter(counter + 1)}>Increment</button>
       <h2>Counter 2: {counter2}</h2>
