@@ -270,6 +270,82 @@ export default ParentComponent;
    - Calls the `onSendMessage` function (received via props) and sends the data to the parent.
 3. When the button is clicked in the child, the `sendMessageToParent` function is triggered, which in turn calls the parent's function with the message.
 
+---
+
+### Passing Props from Child to Parent using `useImperativeHandle`
+
+In React, props are usually passed from the parent to the child component. However, sometimes you might need to allow the child component to pass certain functionality or data to the parent. This can be done using the `useImperativeHandle` hook in combination with `forwardRef`.
+
+#### Steps to pass props from child to parent using `useImperativeHandle`:
+
+1. **Create the Parent Component:**
+   The parent component uses the `ref` hook to create a reference (`childRef`) to the child component. This reference will be used to interact with methods or properties exposed by the child.
+
+2. **Create the Child Component:**
+   In the child component, you use the `useImperativeHandle` hook to expose specific methods or properties to the parent component. This way, the parent can interact with the child in a controlled way.
+
+#### Example:
+
+1. Parent Component: The parent will create a reference (`ref`) to interact with the child.
+
+```jsx
+import React, { useRef } from "react";
+import Child from "./Child";
+
+function Parent() {
+  const childRef = useRef();
+
+  const handleActionFromChild = () => {
+    // Calling a method exposed by the child
+    childRef.current.alertMessage();
+  };
+
+  return (
+    <div>
+      <button onClick={handleActionFromChild}>Call Child Method</button>
+      <Child ref={childRef} />
+    </div>
+  );
+}
+
+export default Parent;
+```
+
+2. Child Component: In the child component, `useImperativeHandle` is used to expose a method (like `alertMessage`) to the parent.
+
+```jsx
+import React, { useImperativeHandle, forwardRef } from "react";
+
+const Child = forwardRef((props, ref) => {
+  // Exposing a method to the parent
+  useImperativeHandle(ref, () => ({
+    alertMessage: () => {
+      alert("Hello from the Child!");
+    },
+  }));
+
+  return <div>Child Component</div>;
+});
+
+export default Child;
+```
+
+#### How It Works:
+
+- The parent component holds a reference (`childRef`) that points to the child component.
+- The child component uses `useImperativeHandle` to expose certain methods (e.g., `alertMessage`) to the parent.
+- The parent can invoke the exposed methods, such as calling `alertMessage`, through the reference (`childRef.current.alertMessage()`).
+
+#### Key Points:
+
+- `useImperativeHandle` allows the child to expose specific methods or properties to the parent component, enabling more control from the parent.
+- It requires `forwardRef` to pass the reference (`ref`) from the parent to the child component.
+- This pattern is typically used when the parent needs to trigger an action in the child, such as invoking a function, focusing an input, or showing an alert.
+
+In summary, while React typically follows a unidirectional data flow from parent to child, the `useImperativeHandle` hook provides a mechanism for the child to expose specific functionalities back to the parent, allowing for more flexible interactions between the two components.
+
+---
+
 ```
 
 ```
