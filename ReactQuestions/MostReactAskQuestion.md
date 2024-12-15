@@ -175,24 +175,23 @@ StatevsProps.propTypes = {
 
 ## Ques 12: In how many ways can we export/import things from a JS module?
 
-- **Default Export/Import:**
-  - Use when exporting one primary value.
-  - Example:
-    ```jsx
-    export default Counter;
-    import Counter from "./counter";
-    ```
-- **Named Export/Import:**
-  - Use for multiple exports from a module.
-  - Example:
-    ```jsx
-    export { Counter };
-    import { Counter } from "./counter";
-    ```
+- **Default Export/Import:** - Use it when you want to export something by default. - Multiple Default exports are not allowed from the same module. - We can refer to the default exported thing by any name, so the name is not significant. - Example:
+  ```jsx
+  export default Counter;
+  import Counter from "./counter";
+  ```
+- **Named Export/Import:** - Use it when you have multiple things to be exported from a JS Module. - Named exports must be referred to by the Exact Same Name while importing them. - Example:
+
+  ```jsx
+  export { Counter };
+  import { Counter } from "./counter";
+  ```
 
 ## Ques 13: What is Virtual DOM?
 
-- A logical representation of the actual DOM as React elements.
+- A logical representation of the actual DOM in the form of React Elements.
+- A programming concept where a virtual representation of the UI is kept in the memory.
+- It is an object that has React Elements to represent the UI.
 - Used to efficiently update the UI by calculating differences (diffing).
 
 ## Ques 14: Reconciliation vs Rendering?
@@ -204,3 +203,7 @@ StatevsProps.propTypes = {
 
 - Calculates the difference between the previous and updated Virtual DOMs.
 - Updates only the changed parts in the actual DOM, making React highly efficient for DOM manipulations.
+
+```
+
+```
