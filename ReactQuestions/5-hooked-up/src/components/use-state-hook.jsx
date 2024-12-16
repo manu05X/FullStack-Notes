@@ -16,9 +16,9 @@ const UseStateHook = () => {
   };
 
   const handleIncrement = () => {
-    // setCount(count + 1);
-    // setCount(count + 1);
-    // setCount(count + 1);
+    // setCount(count + 1); // 0+1
+    // setCount(count + 1); // 0+1
+    // setCount(count + 1); // 0+1
     /*
     - As setCount is setter function is a asynchronous function, it doesn't immediately update the state. After all code executes, then handleIncrement is called only one time.
     - Here, setCount is being called three times in a row, each using the same count value from the initial render or last render.
@@ -27,10 +27,10 @@ const UseStateHook = () => {
     
     */
 
-    // We will do this instead of above
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
+    // We will do this instead of above by using callback function in setCount.
+    setCount((prev) => prev + 1); // 0 -> 1
+    setCount((prev) => prev + 1); // 1 -> 2
+    setCount((prev) => prev + 1); // 2 -> 3
   };
 
   /*
